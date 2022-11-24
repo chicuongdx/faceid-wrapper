@@ -8,7 +8,7 @@ class Yolov5:
         self._URL_ = url
         self.model = self.load_model()
         self.classes = self.model.names
-        self.device = 'cuda' if torch.cuda.is_available() else 'cpu'
+        self.device = 'cpu'
 
     def load_model(self):
         model = torch.hub.load('./yolov5', 'custom', path=self._URL_, source='local')
