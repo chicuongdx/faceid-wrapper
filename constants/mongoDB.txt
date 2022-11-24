@@ -1,0 +1,1 @@
+mongodb+srv://chicuongdx:aneicer123@faceid.6xlxf8o.mongodb.net/?retryWrites=true&w=majority
