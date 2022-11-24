@@ -73,12 +73,6 @@ tensorboard-data-server==0.6.1
 tensorboard-plugin-wit==1.8.1
 thop==0.1.1.post2209072238
 tomli==2.0.1
---find-links https://download.pytorch.org/whl/torch_stable.html
-torch==1.13.0+cpu
---find-links https://download.pytorch.org/whl/torch_stable.html
-torchaudio==0.13.0+cpu
---find-links https://download.pytorch.org/whl/torch_stable.html
-torchvision==0.14.0+cpu
 tqdm==4.64.1
 traitlets==5.5.0
 typing_extensions==4.4.0
