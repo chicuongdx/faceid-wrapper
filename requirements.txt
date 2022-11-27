@@ -27,7 +27,6 @@ h11==0.14.0
 idna==3.4
 importlib-metadata==5.0.0
 imutils==0.5.4
-ipython==8.6.0
 jedi==0.18.2
 kiwisolver==1.4.4
 Markdown==3.4.1
