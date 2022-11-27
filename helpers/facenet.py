@@ -6,7 +6,7 @@ import numpy as np
 
 cos = nn.CosineSimilarity(dim=1, eps=1e-6)
 class FaceNet:
-    def __init__(self, device='cude:0'):
+    def __init__(self, device='cuda:0'):
         self.device = torch.device(device)
         self.model = InceptionResnetV1(
             classify=False,
