@@ -10,6 +10,7 @@ import pymongo
 import torch
 
 bd_model = BoundingBox('models/best.pt')
+fn_model = FaceNet()
 app = fastapi.FastAPI()
 
 #monggoDB
@@ -48,7 +49,6 @@ async def feature_matching(img1: UploadFile = File(...), img2: UploadFile = File
 
     face1 = bd_model.crop_boudingbox(nparr1)
     face2 = bd_model.crop_boudingbox(nparr2)
-    fn_model = FaceNet('cpu')
 
     #get embedding
     embedding1 = fn_model.get_embedding(face1)
@@ -74,7 +74,6 @@ async def face_register(faceid: str = Form(...) ,img: UploadFile = File(...)):
 
         nparr = np.array(read_imagefile(await img.read()))
         face = bd_model.crop_boudingbox(nparr)
-        fn_model = FaceNet('cpu')
 
         feature = fn_model.get_embedding(face)
 
@@ -98,7 +97,6 @@ async def face_indentity(img: UploadFile = File(...)):
     try:
         nparr = np.array(read_imagefile(await img.read()))
         face = bd_model.crop_boudingbox(nparr)
-        fn_model = FaceNet('cpu')
 
         feature = fn_model.get_embedding(face)
         #query_sha256 = sha256.hash_embedding(feature)

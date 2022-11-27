@@ -57,7 +57,7 @@ class FaceNet:
             return True, distance
         return False, distance
     
-    def feature_matching_embedding_cosine(self, embedding1, embedding2, thresh=0.7):
+    def feature_matching_embedding_cosine(self, embedding1, embedding2, thresh=0.8):
         cos_sim = self.cosine_similarity(embedding1, embedding2)
         print(cos_sim)
         if cos_sim > thresh:

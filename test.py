@@ -19,4 +19,5 @@ face2 = bd_model.crop_boudingbox(img2)
 feature1 = fn_model.get_embedding(face1)
 feature2 = fn_model.get_embedding(face2)
 
-print(sha256.compare_embedding(feature1, feature2))
+#compare feature
+matching, cosine = fn_model.feature_matching_embedding_cosine(feature1, feature2)
