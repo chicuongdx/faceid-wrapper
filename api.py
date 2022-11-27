@@ -112,7 +112,7 @@ async def face_indentity(img: UploadFile = File(...)):
             #reshape array [n] -> [1,n]
             faceid_feature = faceid_feature.reshape(1,faceid_feature.shape[0])
             #convert array to tensor
-            faceid_feature = torch.from_numpy(faceid_feature)
+            faceid_feature = torch.from_numpy(faceid_feature).to(device=fn_model.device.type)
             match, cosine = fn_model.feature_matching_embedding_cosine(faceid_feature, feature)
             #version sha256
             #match, distance = sha256.feature_matching(query_sha256, faceid['feature'])
@@ -133,3 +133,6 @@ async def face_indentity(img: UploadFile = File(...)):
         return {"faceids": face_matching, "status": "success"}
     except Exception as e:
         return {"msg": e, "status": "fail"}
+
+if __name__ == '__main__':
+    uvicorn.run(app, host='0.0.0.0', port=8000)
