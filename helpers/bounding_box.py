@@ -61,11 +61,10 @@ class BoundingBox(yolov5):
             location = results.xyxy[0].tolist()
 
         if len(location) == 0:
-            return img
+            raise Exception("No face")
 
         if len(location) != 1:
-            print("More than 1 face")
-            return img
+            raise Exception("More than 1 face")
 
         xyxy = location[0]
         x1, y1, x2, y2 = int(xyxy[0]), int(xyxy[1]), int(xyxy[2]), int(xyxy[3])
