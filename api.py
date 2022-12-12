@@ -78,7 +78,7 @@ async def face_register(faceid: str = Form(...) ,img: UploadFile = File(...)):
         feature = fn_model.get_embedding(face)
 
         #tensor to array
-        feature = feature.detach().numpy()
+        feature = feature.to('cpu').detach().numpy()
         #reshape array [1,n] -> [n]
         feature = feature.reshape(feature.shape[1],)
         feature = feature.tolist()
@@ -90,7 +90,7 @@ async def face_register(faceid: str = Form(...) ,img: UploadFile = File(...)):
 
         return { "faceid": faceid, "status": "success"}
     except Exception as e:
-        return {"msg": e, "status": "fail"}
+        return {"msg": e.args[0], "status": "fail"}
 
 @app.post('/api/face_indentity')
 async def face_indentity(img: UploadFile = File(...)):
@@ -132,7 +132,7 @@ async def face_indentity(img: UploadFile = File(...)):
         #return all faceid with distance
         return {"faceids": face_matching, "status": "success"}
     except Exception as e:
-        return {"msg": e, "status": "fail"}
+        return {"msg": e.args[0], "status": "fail"}
 
 if __name__ == '__main__':
     uvicorn.run(app, host='0.0.0.0', port=8000)
