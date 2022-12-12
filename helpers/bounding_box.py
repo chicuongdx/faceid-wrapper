@@ -3,7 +3,7 @@ import cv2
 from imutils import face_utils
 
 class BoundingBox(yolov5):
-    def __init__(self, url):
+    def __init__(self, url="models/best.pt"):
         self.model = yolov5(url)
         self.classes = self.model.classes
         self.device = self.model.device
@@ -62,7 +62,25 @@ class BoundingBox(yolov5):
 
         if len(location) == 0:
             return img
+
+        if len(location) != 1:
+            print("More than 1 face")
+            return img
+
         xyxy = location[0]
         x1, y1, x2, y2 = int(xyxy[0]), int(xyxy[1]), int(xyxy[2]), int(xyxy[3])
         crop_img = img[y1:y2, x1:x2]
         return crop_img
+    
+    def get_boudingbox(self, img):
+        results = self.model.detect(img)
+        boxes = results.xyxy[0].tolist()
+
+        if len(boxes) == 0:
+            return None
+        
+        if len(boxes) != 1:
+            print("More than 1 face")
+            return None
+            
+        return boxes

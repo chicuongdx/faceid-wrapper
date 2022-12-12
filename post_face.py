@@ -2,7 +2,7 @@ import urllib3
 import requests
 import os
 
-url = "http://d58a-34-91-29-67.ngrok.io"
+url = "http://1677-34-87-50-222.ngrok.io"
 instance = '/api/face_register'
 
 #name_file = "test_file/itsme.jpg"
@@ -20,4 +20,4 @@ def register_face(faceid, name):
 base_id = "tuyen"
 base_name = "test_file/tuyen/"
 for idx, name in enumerate(os.listdir(base_name)):
-    register_face(base_id + str(idx), base_name + name)
+    register_face(str(name[:-4]), base_name + name)

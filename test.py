@@ -9,7 +9,7 @@ facenet_url = 'models/facenet.pt'
 fn_model = FaceNet('cpu')
 
 img1 = cv2.imread("test_file/itsme.jpg")
-img2 = cv2.imread("test_file/hpd.jpg")
+img2 = cv2.imread("test_file/tuyen.jpg")
 
 bd_model = BoundingBox(yolov5_url)
 

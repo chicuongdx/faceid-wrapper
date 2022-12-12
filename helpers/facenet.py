@@ -18,8 +18,9 @@ class FaceNet:
         # formula for fixed_image_standardization
         # x = (x - mean) / std
         img = fixed_image_standardization(img)
+        print(img.shape)
         img = torch.from_numpy(np.array(img, dtype=np.float32))
-        img = img.to(self.device)
+        print(img)
         embedding = self.model(img.unsqueeze(0).permute(0, 3, 1, 2))
         return embedding
     
