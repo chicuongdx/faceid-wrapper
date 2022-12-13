@@ -1,5 +1,5 @@
 from facenet_pytorch import InceptionResnetV1, fixed_image_standardization
-import os
+import os, cv2
 import torch
 import torch.nn as nn
 import numpy as np
@@ -17,6 +17,7 @@ class FaceNet:
     def get_embedding(self, img):
         # formula for fixed_image_standardization
         # x = (x - mean) / std
+        img = cv2.resize(img, (300, 300))
         img = fixed_image_standardization(img)
         img = torch.from_numpy(np.array(img, dtype=np.float32)).to(self.device)
         embedding = self.model(img.unsqueeze(0).permute(0, 3, 1, 2))

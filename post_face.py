@@ -2,7 +2,7 @@ import urllib3
 import requests
 import os
 
-url = "http://8503-35-197-122-217.ngrok.io"
+url = "http://c70c-35-240-237-49.ngrok.io"
 instance = '/api/face_register'
 
 #name_file = "test_file/itsme.jpg"
