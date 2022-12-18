@@ -2,7 +2,7 @@ import requests
 import json
 
 
-url = "http://9d51-35-193-235-231.ngrok.io"
+url = "http://aa6e-34-124-207-46.ngrok.io"
 instance = '/api/face_indentity'
 
 requests.Timeout = 30
@@ -19,4 +19,5 @@ def indentity_face(name):
 
 obj_response = indentity_face("test_file/tuyen.jpg")
 
+print(obj_response)
 print(len(obj_response['faceids']))

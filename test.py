@@ -21,3 +21,6 @@ feature2 = fn_model.get_embedding(face2)
 
 #compare feature
 matching, cosine = fn_model.feature_matching_embedding_cosine(feature1, feature2)
+
+print(matching)
+print(cosine)

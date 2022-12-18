@@ -17,7 +17,7 @@ class FaceNet:
     def get_embedding(self, img):
         # formula for fixed_image_standardization
         # x = (x - mean) / std
-        img = cv2.resize(img, (300, 300))
+        img = cv2.resize(img, (512, 512))
         img = fixed_image_standardization(img)
         img = torch.from_numpy(np.array(img, dtype=np.float32)).to(self.device)
         embedding = self.model(img.unsqueeze(0).permute(0, 3, 1, 2))
@@ -59,7 +59,6 @@ class FaceNet:
     
     def feature_matching_embedding_cosine(self, embedding1, embedding2, thresh=0.8):
         cos_sim = self.cosine_similarity(embedding1, embedding2)
-        print(cos_sim)
         if cos_sim > thresh:
             return True, cos_sim
         return False, cos_sim
